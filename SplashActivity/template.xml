@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="7"
+    name="Splash Activity"
+    minApi="7"
+    minBuildApi="14"
+    description="Creates a SplashActivity">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="SplashActivity"
+        help="The name of the activity class to create" />
+
+    <parameter
+        id="activityLayoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        default="splash_activity"
+        help="The name of the layout to create for the activity" />
+		
+	<parameter
+        id="mainActivityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainActivity"
+        help="The name of the activity class to create" />
+
+    <parameter
+        id="mainActivityLayoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        default="main_activity"
+        help="The name of the layout to create for the activity" />
+
+    <parameter
+        id="secondTime"
+        name="Second Time"
+        type="string"
+        constraints="nonempty"
+        default="2"
+        help="The time of activity delay" />
+
+    <parameter
+        id="isLauncher"
+        name="Launcher Activity"
+        type="boolean"
+        default="false"
+        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher" />
+    
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.gzfgeh.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>splash_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
