@@ -14,28 +14,12 @@
 	    <dependency mavenUrl="com.android.support:design:${buildApi}.+" />
 	</#if>
 	
-	<dependency mavenUrl="io.reactivex:rxjava:1.1.4" />
-	<dependency mavenUrl="io.reactivex:rxandroid:1.2.0" />
-	<dependency mavenUrl="com.github.bumptech.glide:glide:3.7.0" />
-	
 
-	<instantiate from="root/src/app_package/SplashActivity.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/${activityClass}.java" />
-		
-	<instantiate from="root/src/app_package/MainActivity.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/${mainActivityClass}.java" /> 
-
-	<instantiate from="root/res/layout/activity_splash.xml.ftl"
-		to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml" />
-		
-	<instantiate from="root/res/layout/activity_main.xml.ftl"
-		to="${escapeXmlAttribute(resOut)}/layout/${mainActivityLayoutName}.xml" />
-		
 	<instantiate from="root/src/app_package/LaunchActivity.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/${launchActivityClass}.java" />
+     	to="${escapeXmlAttribute(srcOut)}/${activityClass}.java" />
 
 	<instantiate from="root/res/layout/activity_launch.xml.ftl"
-		to="${escapeXmlAttribute(resOut)}/layout/${launchActivityLayoutName}.xml" />
+		to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml" />
 	
 	<instantiate from="root/src/app_package/SimpleFragment.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/Fragment/SimpleFragment.java" /> 
@@ -47,13 +31,11 @@
         to="${escapeXmlAttribute(srcOut)}/Interface/LauncherBaseFragment.java" />
 		
 	<instantiate from="root/src/app_package/BaseFragmentAdapter.java.ftl"
-        to="${escapeXmlAttribute(srcOut)}/Adapter/BaseFragmentAdapter.java" />
+        to="${escapeXmlAttribute(srcOut)}/Adapter/BaseFragmentAdapter.java" /> 
 	
 	<copy from="root/res/drawable-xxhdpi"
             to="${escapeXmlAttribute(resOut)}/drawable-xxhdpi" />
 			
-	<merge from="root/res/values/styles.xml.ftl"
-			to="${escapeXmlAttribute(resOut)}/values/styles.xml" />
 	<merge from="root/AndroidManifest.xml.ftl"
              to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
 			       

@@ -22,6 +22,6 @@
         </activity>
 		
 		<activity android:name=".MainActivity" />
-		
+		<activity android:name=".LaunchActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     </application>
 </manifest>

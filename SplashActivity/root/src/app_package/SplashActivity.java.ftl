@@ -20,7 +20,7 @@ import rx.functions.Func1;
 
 public class ${activityClass} extends AppCompatActivity{
     private static final int STARTUP_DELAY = 300; // 启动延迟
-    private static final int ANIM_ITEM_DURATION = 1000;
+    private static final int ANIM_ITEM_DURATION = 1500;
 
     private ImageView tempPage;
     private ImageView ivLogo;
@@ -50,7 +50,7 @@ public class ${activityClass} extends AppCompatActivity{
 
                     @Override
                     public void onError(Throwable e) {
-                        startActivity(new Intent(${activityClass}.this, MainActivity.class));
+                        startActivity(new Intent(${activityClass}.this, LaunchActivity.class));
                         finish();
                     }
 
@@ -64,7 +64,7 @@ public class ${activityClass} extends AppCompatActivity{
                                 .map(new Func1<Long, Object>() {
                                     @Override
                                     public Object call(Long aLong) {
-                                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                                        startActivity(new Intent(SplashActivity.this, LaunchActivity.class));
                                         finish();
                                         return aLong;
                                     }
@@ -89,7 +89,7 @@ public class ${activityClass} extends AppCompatActivity{
         viewAnimator = ViewCompat.animate(tvLogoText)
                 .translationY(100).alpha(1)
                 .setStartDelay(500)
-                .setDuration(1000);
+                .setDuration(ANIM_ITEM_DURATION);
         viewAnimator.setInterpolator(new DecelerateInterpolator()).start();
     }
 }
