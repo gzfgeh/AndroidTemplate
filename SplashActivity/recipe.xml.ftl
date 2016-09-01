@@ -18,6 +18,13 @@
 	<dependency mavenUrl="io.reactivex:rxandroid:1.2.0" />
 	<dependency mavenUrl="com.github.bumptech.glide:glide:3.7.0" />
 	
+	<dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:3.4.1" />
+	<dependency mavenUrl="com.squareup.okhttp3:okhttp:3.4.1" />
+	
+	<dependency mavenUrl="com.squareup.retrofit2:retrofit:2.1.0" />
+	<dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.1.0" />
+	<dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava:2.1.0" />
+	
 
 	<instantiate from="root/src/app_package/SplashActivity.java.ftl"
      	to="${escapeXmlAttribute(srcOut)}/${activityClass}.java" />
@@ -48,6 +55,55 @@
 		
 	<instantiate from="root/src/app_package/BaseFragmentAdapter.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/Adapter/BaseFragmentAdapter.java" />
+		
+		
+		
+	
+	<instantiate from="root/src/app_package/BaseModel.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Model/BaseModel.java" />
+		
+	<instantiate from="root/src/app_package/RetrofitConfig.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Model/RetrofitConfig.java" /> 
+		
+	<instantiate from="root/src/app_package/RetrofitService.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Model/RetrofitService.java" />
+		
+	<instantiate from="root/src/app_package/SplashModel.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Model/SplashModel.java" />
+	
+	<instantiate from="root/src/app_package/BasePresenter.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Present/BasePresenter.java" />
+		
+	<instantiate from="root/src/app_package/Presenter.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Present/Presenter.java" />
+		
+	<instantiate from="root/src/app_package/SplashPresent.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Present/SplashPresent.java" />
+		
+	<instantiate from="root/src/app_package/LogUtils.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Utils/LogUtils.java" />
+		
+	<instantiate from="root/src/app_package/NetWorkUtils.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Utils/NetWorkUtils.java" />
+		
+	<instantiate from="root/src/app_package/RxUtils.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Utils/RxUtils.java" />
+		
+	<instantiate from="root/src/app_package/ShareUtils.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Utils/ShareUtils.java" /> 
+	
+	<instantiate from="root/src/app_package/BaseView.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/View/BaseView.java" />
+		
+	<instantiate from="root/src/app_package/SplashView.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/View/SplashView.java" />	
+		
+	<instantiate from="root/src/app_package/APP.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/APP.java" />	
+		
+		
+		
+	
 	
 	<copy from="root/res/drawable-xxhdpi"
             to="${escapeXmlAttribute(resOut)}/drawable-xxhdpi" />
