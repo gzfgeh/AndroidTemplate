@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -17,6 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+@Singleton
 public class RetrofitConfig {
     private RetrofitService retrofitService;
 
@@ -43,7 +47,8 @@ public class RetrofitConfig {
             return response;
         }
     };
-
+	
+	@Inject
     public RetrofitConfig() {
         File cacheFile = new File(APP.getContext().getCacheDir(), "OkHttpCache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100);

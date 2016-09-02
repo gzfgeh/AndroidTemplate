@@ -1,4 +1,4 @@
-package ${packageName};
+package ${packageName}.Activity;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import ${packageName}.Adapter.BaseFragmentAdapter;
 import ${packageName}.Fragment.SimpleFragment;
 import ${packageName}.Interface.LauncherBaseFragment;
 import ${packageName}.Widget.GuideViewPager;
+import ${packageName}.R;
 
 import java.util.ArrayList;
 import java.util.List;

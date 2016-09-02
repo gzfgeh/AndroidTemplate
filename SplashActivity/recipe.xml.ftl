@@ -24,13 +24,17 @@
 	<dependency mavenUrl="com.squareup.retrofit2:retrofit:2.1.0" />
 	<dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.1.0" />
 	<dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava:2.1.0" />
+	<dependency mavenUrl="com.google.dagger:dagger:2.0.2" />
+	<dependency mavenUrl="apt 'com.google.dagger:dagger-compiler:2.0.2'" />
+	<dependency mavenUrl="provided 'org.glassfish:javax.annotation:10.0-b28'" />
+	
 	
 
 	<instantiate from="root/src/app_package/SplashActivity.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/${activityClass}.java" />
+     	to="${escapeXmlAttribute(srcOut)}/Activity/${activityClass}.java" />
 		
 	<instantiate from="root/src/app_package/MainActivity.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/${mainActivityClass}.java" /> 
+     	to="${escapeXmlAttribute(srcOut)}/Activity/${mainActivityClass}.java" /> 
 
 	<instantiate from="root/res/layout/activity_splash.xml.ftl"
 		to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml" />
@@ -39,7 +43,7 @@
 		to="${escapeXmlAttribute(resOut)}/layout/${mainActivityLayoutName}.xml" />
 		
 	<instantiate from="root/src/app_package/LaunchActivity.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/${launchActivityClass}.java" />
+     	to="${escapeXmlAttribute(srcOut)}/Activity/${launchActivityClass}.java" />
 
 	<instantiate from="root/res/layout/activity_launch.xml.ftl"
 		to="${escapeXmlAttribute(resOut)}/layout/${launchActivityLayoutName}.xml" />
@@ -101,9 +105,33 @@
 	<instantiate from="root/src/app_package/APP.java.ftl"
      	to="${escapeXmlAttribute(srcOut)}/APP.java" />	
 		
+	<instantiate from="root/src/app_package/ActivityComponent.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Component/ActivityComponent.java" />
+	
+	<instantiate from="root/src/app_package/ActivityComponentFactory.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Component/ActivityComponentFactory.java" />
 		
+	<instantiate from="root/src/app_package/ActivityScope.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Component/ActivityScope.java" />
+		
+	<instantiate from="root/src/app_package/ApplicationComponent.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Component/ApplicationComponent.java" />		
+		
+	<instantiate from="root/src/app_package/ActivityModule.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Module/ActivityModule.java" />
+		
+	<instantiate from="root/src/app_package/ApplicationModule.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Module/ApplicationModule.java" />	
+		
+	<instantiate from="root/src/app_package/BaseActivity.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Activity/BaseActivity.java" />	
 		
 	
+
+
+
+	
+		
 	
 	<copy from="root/res/drawable-xxhdpi"
             to="${escapeXmlAttribute(resOut)}/drawable-xxhdpi" />
@@ -112,7 +140,9 @@
 			to="${escapeXmlAttribute(resOut)}/values/styles.xml" />
 	<merge from="root/AndroidManifest.xml.ftl"
              to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
-			       
+	<merge from="root/build.gradle.ftl"
+             to="${escapeXmlAttribute(projectOut)}/build.gradle" />
+			 
  	<open file="${escapeXmlAttribute(srcOut)}/${activityClass}.java" />
 	
 </recipe>

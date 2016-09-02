@@ -2,11 +2,17 @@ package  ${packageName}.Model;
 
 import ${packageName}.Utils.RxUtils;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import rx.Observable;
 import rx.Subscriber;
 
+@Singleton
 public class SplashModel extends BaseModel {
-
+	@Inject
+    public SplashModel(){}
+	
     public Observable<String> getUrl(){
         return Observable.create(new Observable.OnSubscribe<String>() {
             @Override

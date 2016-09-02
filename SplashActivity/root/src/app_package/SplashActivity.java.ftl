@@ -1,4 +1,4 @@
-package  ${packageName};
+package  ${packageName}.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,22 +7,24 @@ import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.support.v7.app.AppCompatActivity;
+import ${packageName}.Activity.BaseActivity;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import ${packageName}.Present.SplashPresent;
 import ${packageName}.Utils.ShareUtils;
 import ${packageName}.View.SplashView;
+import ${packageName}.R;
 
 import java.util.concurrent.TimeUnit;
+import javax.inject.Inject;
 
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 
-public class ${activityClass} extends AppCompatActivity implements SplashView{
+public class ${activityClass} extends BaseActivity implements SplashView{
     private static final int STARTUP_DELAY = 300; // 启动延迟
     private static final int ANIM_ITEM_DURATION = 2000;
 
@@ -31,14 +33,15 @@ public class ${activityClass} extends AppCompatActivity implements SplashView{
     private TextView tvLogoText;
     private ViewPropertyAnimatorCompat viewAnimator;
     private int secondTime = ${secondTime};
-	private SplashPresent splashPresent;
+	
+	@Inject
+	SplashPresent splashPresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.${activityLayoutName});
-		
-		splashPresent = new SplashPresent();
+		getActivityComponent.inject(this);
         splashPresent.attachView(this);
         splashPresent.getUrl();
 

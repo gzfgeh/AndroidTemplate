@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
 		android:name=".APP">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".Activity.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashActivity"
             <intent-filter>
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 		
-		<activity android:name=".MainActivity" />
-		<activity android:name=".LaunchActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+		<activity android:name=".Activity.MainActivity" />
+		<activity android:name=".Activity.LaunchActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     </application>
 </manifest>

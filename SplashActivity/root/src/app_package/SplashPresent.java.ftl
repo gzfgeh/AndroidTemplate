@@ -3,10 +3,16 @@ package  ${packageName}.Present;
 import ${packageName}.Model.SplashModel;
 import ${packageName}.View.SplashView;
 
+import javax.inject.Inject;
+
 import rx.Subscriber;
 
 public class SplashPresent extends BasePresenter<SplashView>{
-    private SplashModel splashModel = new SplashModel();
+    @Inject
+    SplashModel splashModel;
+
+    @Inject
+    public SplashPresent(){}
 
     public void getUrl(){
         mCompositeSubscription.add(splashModel.getUrl()
