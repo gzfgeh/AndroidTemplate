@@ -41,7 +41,7 @@ public class ${activityClass} extends BaseActivity implements SplashView{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.${activityLayoutName});
-		getActivityComponent.inject(this);
+		getActivityComponent().inject(this);
         splashPresent.attachView(this);
         splashPresent.getUrl();
 
