@@ -22,6 +22,11 @@
             </intent-filter>
         </activity>
 		
+		<meta-data android:name="design_width" android:value="1080">
+        </meta-data>
+        <meta-data android:name="design_height" android:value="1920">
+        </meta-data>
+		
 		<activity android:name=".Activity.MainActivity" />
 		<activity android:name=".Activity.LaunchActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
     </application>

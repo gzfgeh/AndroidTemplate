@@ -27,6 +27,7 @@
 	<dependency mavenUrl="com.google.dagger:dagger:2.0.2" />
 	<dependency mavenUrl="apt 'com.google.dagger:dagger-compiler:2.0.2'" />
 	<dependency mavenUrl="provided 'org.glassfish:javax.annotation:10.0-b28'" />
+	<dependency mavenUrl="com.zhy:autolayout:1.4.5" />
 	
 	
 
@@ -50,6 +51,9 @@
 	
 	<instantiate from="root/src/app_package/SimpleFragment.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/Fragment/SimpleFragment.java" /> 
+		
+	<instantiate from="root/res/layout/fragment_launch.xml.ftl"
+		to="${escapeXmlAttribute(resOut)}/layout/fragment_launch.xml" />
 		
 	<instantiate from="root/src/app_package/GuideViewPager.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/Widget/GuideViewPager.java" />

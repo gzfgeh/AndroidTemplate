@@ -1,11 +1,10 @@
 package ${packageName}.Activity;
 
-import android.support.v7.app.AppCompatActivity;
-
 import ${packageName}.Component.ActivityComponent;
 import ${packageName}.Component.ActivityComponentFactory;
+import com.zhy.autolayout.AutoLayoutActivity;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AutoLayoutActivity {
     protected ActivityComponent activityComponent;
 
     public ActivityComponent getActivityComponent() {
