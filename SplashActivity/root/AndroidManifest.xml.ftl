@@ -28,6 +28,6 @@
         </meta-data>
 		
 		<activity android:name=".Activity.MainActivity" />
-		<activity android:name=".Activity.LaunchActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+		<activity android:name=".Activity.LaunchActivity" />
     </application>
 </manifest>

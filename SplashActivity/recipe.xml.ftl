@@ -53,7 +53,7 @@
         to="${escapeXmlAttribute(srcOut)}/Fragment/SimpleFragment.java" /> 
 		
 	<instantiate from="root/res/layout/fragment_launch.xml.ftl"
-		to="${escapeXmlAttribute(resOut)}/layout/fragment_launch.xml" />
+		to="${escapeXmlAttribute(resOut)}/layout/${fragmentLaunchLayoutName}.xml" />
 		
 	<instantiate from="root/src/app_package/GuideViewPager.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/Widget/GuideViewPager.java" />

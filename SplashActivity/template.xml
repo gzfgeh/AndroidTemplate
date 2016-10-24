@@ -57,6 +57,14 @@
         constraints="layout|unique|nonempty"
         default="activity_launch"
         help="The name of the layout to create for the activity" />
+		
+	<parameter
+        id="fragmentLaunchLayoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        default="fragment_launch"
+        help="The name of the layout to create for the fragment" />
 
     <parameter
         id="secondTime"

@@ -7,9 +7,14 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 
+import ${packageName}.Activity.MainActivity;
 import ${packageName}.Interface.LauncherBaseFragment;
+import ${packageName}.R;
+import ${packageName}.Utils.ShareUtils;
+import ${packageName}.databinding.FragmentLaunchBinding;
 
 /**
  * Created by guzhenfu on 16/6/6.
@@ -17,13 +22,14 @@ import ${packageName}.Interface.LauncherBaseFragment;
 public class SimpleFragment extends LauncherBaseFragment{
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
-        TextView tv = new TextView(getActivity());
-        tv.setGravity(Gravity.CENTER);
-        tv.setTextSize(40);
-        tv.setText("just test");
-        return tv ;
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        FragmentLaunchBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_launch, container, false);
+        binding.setBtnText("立即使用");
+        binding.setBtnClick(View-> {
+            ShareUtils.putValue("isComeOver", true);
+            startActivity(new Intent(getActivity(), MainActivity.class));
+        });
+        return binding.getRoot();
     }
 	
 	@Override
