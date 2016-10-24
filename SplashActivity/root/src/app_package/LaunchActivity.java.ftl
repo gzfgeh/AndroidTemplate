@@ -38,7 +38,7 @@ public class LaunchActivity extends FragmentActivity implements ViewPager.OnPage
             mIcons[i] = ivIcon;
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    new ViewGroup.LayoutParams(30,30));
+                    new ViewGroup.LayoutParams(15,15));
             params.setMargins(30,0,30,120);
             viewGroup.addView(ivIcon, params);
         }
