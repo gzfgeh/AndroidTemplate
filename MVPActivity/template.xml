@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<template
+        format="5"
+        revision="3"
+        name="MVPActivity"
+        minApi="7"
+        minBuildApi="14"
+        requireAppTheme="true"
+        description="根据pageName生成activity">
+
+		<category value="Activity" />
+
+    <parameter
+        id="pageName"
+        name="Page Name"
+        constraints="class|nonempty|unique"
+        default=""
+        help="将创建的页面的名字"
+        code="string" />
+
+    <parameter
+        id="activityName"
+        name="Activity Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        default="Activity"
+        suggest="${pageName}Activity"
+        help="activity的类名" />
+
+    <parameter
+        id="layoutName"
+        name="Activity Layout Name"
+        code="string"
+        constraints="layout|nonempty|unique"
+        default="activity_"
+        suggest="activity_${classToResource(activityName)}"
+        help="activity的布局文件名" />
+		
+	<parameter
+        id="presenterName"
+        name="Presenter Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        suggest="${pageName}Presenter"
+        help="presenter的类名" />
+		
+		
+	<parameter
+        id="modelName"
+        name="Model Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        suggest="${pageName}Model"
+        help="model的类名" />
+		
+	<parameter
+        id="viewName"
+        name="View Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        suggest="${pageName}View"
+        help="view的类名" />
+		
+	<parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.gzfgeh.nbapp" />
+
+    <thumbs>
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

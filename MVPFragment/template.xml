@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<template
+        format="5"
+        revision="3"
+        name="MVPFragment"
+        minApi="7"
+        minBuildApi="14"
+        requireAppTheme="true"
+        description="根据pageName生成fragment">
+
+		<category value="Fragment" />
+    <dependency name="android-support-v4" revision="8" />
+
+    <parameter
+        id="pageName"
+        name="Page Name"
+        constraints="class|nonempty|unique"
+        default=""
+        help="将创建的页面的名字"
+        code="string" />
+
+    <parameter
+        id="fragmentName"
+        name="Fragment Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        default="Fragment"
+        suggest="${pageName}Fragment"
+        help="fragment的类名" />
+
+    <parameter
+        id="layoutName"
+        name="Fragment Layout Name"
+        code="string"
+        constraints="layout|nonempty|unique"
+        default="fragment_"
+        suggest="fragment_${classToResource(fragmentName)}"
+        help="fragment的布局文件名" />
+		
+	<parameter
+        id="presenterName"
+        name="Presenter Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        suggest="${pageName}Presenter"
+        help="presenter的类名" />
+		
+		
+	<parameter
+        id="modelName"
+        name="Model Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        suggest="${pageName}Model"
+        help="model的类名" />
+		
+	<parameter
+        id="viewName"
+        name="View Name"
+        code="string"
+        constraints="class|nonempty|unique"
+        suggest="${pageName}View"
+        help="view的类名" />
+		
+	<parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.gzfgeh.nbapp" />
+
+    <thumbs>
+        <thumb>template_blank_fragment.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
