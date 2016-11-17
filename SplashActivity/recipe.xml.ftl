@@ -30,7 +30,7 @@
 	<dependency mavenUrl="com.zhy:autolayout:1.4.5" />
 	<dependency mavenUrl="com.jakewharton:butterknife:8.4.0" />
 	<dependency mavenUrl="apt 'com.jakewharton:butterknife-compiler:8.4.0'" />
-	<dependency mavenUrl="compile 'com.github.gzfgeh:RecyclerView:V1.2'" />
+	<dependency mavenUrl="compile 'com.github.gzfgeh:RecyclerView:V1.3'" />
 	
 	
 
