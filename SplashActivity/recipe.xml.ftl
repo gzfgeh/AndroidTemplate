@@ -28,6 +28,9 @@
 	<dependency mavenUrl="apt 'com.google.dagger:dagger-compiler:2.0.2'" />
 	<dependency mavenUrl="provided 'org.glassfish:javax.annotation:10.0-b28'" />
 	<dependency mavenUrl="com.zhy:autolayout:1.4.5" />
+	<dependency mavenUrl="com.jakewharton:butterknife:8.4.0" />
+	<dependency mavenUrl="apt 'com.jakewharton:butterknife-compiler:8.4.0'" />
+	<dependency mavenUrl="compile 'com.github.gzfgeh:RecyclerView:V1.2'" />
 	
 	
 
@@ -130,11 +133,12 @@
 	<instantiate from="root/src/app_package/BaseActivity.java.ftl"
      	to="${escapeXmlAttribute(srcOut)}/Activity/BaseActivity.java" />	
 		
-	
+	<instantiate from="root/src/app_package/BaseBean.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Bean/BaseBean.java" />
+		
+	<instantiate from="root/src/app_package/ApiConstants.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Common/ApiConstants.java" />
 
-
-
-	
 		
 	
 	<copy from="root/res/drawable-xxhdpi"

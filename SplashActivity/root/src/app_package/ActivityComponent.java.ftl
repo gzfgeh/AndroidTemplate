@@ -2,6 +2,7 @@ package  ${packageName}.Component;
 
 import ${packageName}.Module.ActivityModule;
 import ${packageName}.Activity.SplashActivity;
+import ${packageName}.Activity.MainActivity;
 
 import dagger.Subcomponent;
 
@@ -9,4 +10,5 @@ import dagger.Subcomponent;
 @ActivityScope
 public interface ActivityComponent {
     void inject(SplashActivity activity);
+    void inject(MainActivity activity);
 }

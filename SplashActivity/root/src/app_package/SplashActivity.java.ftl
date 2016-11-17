@@ -106,7 +106,7 @@ public class ${activityClass} extends BaseActivity implements SplashView{
     }
 
     @Override
-    public void onFailure(String s) {
+    public void onFailure() {
 
     }
 

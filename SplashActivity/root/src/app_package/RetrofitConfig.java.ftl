@@ -2,6 +2,7 @@ package  ${packageName}.Model;
 
 import ${packageName}.APP;
 import ${packageName}.Utils.NetWorkUtils;
+import ${packageName}.Utils.LogUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Singleton
 public class RetrofitConfig {
+	/**
+     * 缓存时间 7天
+     */
+    private static final int CACHE_TIME = 60 * 60 * 24 * 7;
+	
     private RetrofitService retrofitService;
 
     private Interceptor interceptor = new Interceptor() {
@@ -38,12 +44,25 @@ public class RetrofitConfig {
                         .removeHeader("Pragma")
                         .build();
             }else{
-                int maxStale = 60* 60* 24 * 7;
-                response.newBuilder().header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
+                response.newBuilder().header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_TIME)
                         .removeHeader("Pragma")
                         .build();
             }
 
+            return response;
+        }
+    };
+	
+	private final Interceptor loggingInterceptor = new Interceptor() {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+            long t1 = System.nanoTime();
+            LogUtils.i(String.format("Sending request %s on %s%n%s", request.url(), chain.connection(), request.headers()));
+            Response response = chain.proceed(request);
+            long t2 = System.nanoTime();
+            LogUtils.i(String.format(Locale.getDefault(), "Received response for %s in %.1fms%n%s",
+                    response.request().url(), (t2 - t1) / 1e6d, response.headers()));
             return response;
         }
     };
@@ -56,11 +75,12 @@ public class RetrofitConfig {
                 .connectTimeout(10000, TimeUnit.MILLISECONDS)
                 .readTimeout(10000, TimeUnit.MILLISECONDS)
                 .addInterceptor(interceptor)
+				.addInterceptor(loggingInterceptor)
                 .cache(cache)
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.baidu.com")
+                .baseUrl(ApiConstants.GANK_IO_HOST)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)

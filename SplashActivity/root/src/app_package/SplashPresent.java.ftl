@@ -26,7 +26,7 @@ public class SplashPresent extends BasePresenter<SplashView>{
                     @Override
                     public void onError(Throwable e) {
                         if (getView() != null)
-                            getView().onFailure(e.getMessage());
+                            getView().onFailure();
                     }
 
                     @Override
