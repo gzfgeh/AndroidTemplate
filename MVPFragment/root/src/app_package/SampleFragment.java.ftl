@@ -21,6 +21,14 @@ public class ${pageName}Fragment extends BaseFragment implements ${pageName}View
 	@Inject
     ${pageName}Presenter presenter;
 	
+	public static ${pageName}Fragment newInstance(String param1) {
+        ${pageName}Fragment fragment = new ${pageName}Fragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        fragment.setArguments(args);
+        return fragment;
+    }
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +47,7 @@ public class ${pageName}Fragment extends BaseFragment implements ${pageName}View
     }
 	
 	@Override
-    public void onFail() {
+    public void onFailure() {
 
     }
 	
