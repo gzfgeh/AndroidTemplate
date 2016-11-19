@@ -10,6 +10,7 @@ import ${packageName}.View.${pageName}View;
 import ${packageName}.Present.${pageName}Presenter;
 
 import javax.inject.Inject;
+import butterknife.BindView;
 
 /**
  * create by 
@@ -40,14 +41,15 @@ public class ${pageName}Fragment extends BaseFragment implements ${pageName}View
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.${layoutName}, container, false);//注意不要指定父视图
+        View view = inflater.inflate(R.layout.${layoutName}, container, false);
+        ButterKnife.bind(this, view);
 		getActivityComponent().inject(this);
 		presenter.attachView(this);
         return view;
     }
 	
 	@Override
-    public void onFailure() {
+    public void onFail() {
 
     }
 	
