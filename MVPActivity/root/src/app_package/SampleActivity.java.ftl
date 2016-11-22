@@ -28,7 +28,7 @@ public class ${pageName}Activity extends BaseActivity implements ${pageName}View
 	
 	
 	@Override
-    public void onFail() {
+    public void onFailure() {
 
     }
 	

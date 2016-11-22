@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <recipe>
+	<#include "../common/recipe_manifest.xml.ftl" />
 
 	<instantiate from="root/src/app_package/SampleActivity.java.ftl"
      	to="${escapeXmlAttribute(srcOut)}/Activity/${activityName}.java" />
