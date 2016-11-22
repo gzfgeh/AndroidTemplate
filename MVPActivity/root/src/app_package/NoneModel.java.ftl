@@ -1,6 +1,7 @@
 package ${packageName}.Model;
 
-import ${packageName}.View.BaseView;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * Created by 
