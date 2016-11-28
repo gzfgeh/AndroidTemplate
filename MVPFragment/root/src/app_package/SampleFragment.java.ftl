@@ -10,7 +10,7 @@ import ${packageName}.View.${pageName}View;
 import ${packageName}.Present.${pageName}Presenter;
 
 import javax.inject.Inject;
-import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * create by 
@@ -49,7 +49,7 @@ public class ${pageName}Fragment extends BaseFragment implements ${pageName}View
     }
 	
 	@Override
-    public void onFail() {
+    public void onFailure() {
 
     }
 	
