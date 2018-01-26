@@ -1,6 +1,7 @@
 package  ${packageName}.Model;
 
 import ${packageName}.APP;
+import ${packageName}.Bean.ApiConstants;
 import ${packageName}.Utils.NetWorkUtils;
 import ${packageName}.Utils.LogUtils;
 

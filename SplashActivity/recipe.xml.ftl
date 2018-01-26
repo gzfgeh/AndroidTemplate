@@ -25,12 +25,9 @@
 	<dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.1.0" />
 	<dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava:2.1.0" />
 	<dependency mavenUrl="com.google.dagger:dagger:2.0.2" />
-	<dependency mavenUrl="apt 'com.google.dagger:dagger-compiler:2.0.2'" />
-	<dependency mavenUrl="provided 'org.glassfish:javax.annotation:10.0-b28'" />
 	<dependency mavenUrl="com.zhy:autolayout:1.4.5" />
 	<dependency mavenUrl="com.jakewharton:butterknife:8.4.0" />
-	<dependency mavenUrl="apt 'com.jakewharton:butterknife-compiler:8.4.0'" />
-	<dependency mavenUrl="compile 'com.github.gzfgeh:RecyclerView:V1.3'" />
+	<dependency mavenUrl="com.github.gzfgeh:RecyclerView:V1.3" />
 	
 	
 
