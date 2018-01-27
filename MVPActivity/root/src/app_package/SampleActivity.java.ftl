@@ -1,5 +1,7 @@
 package ${packageName}.Activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,29 +15,30 @@ import javax.inject.Inject;
 /**
  * create by 
  */
-public class ${pageName}Activity extends BaseActivity implements ${pageName}View{
+public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}View{
 
-	@Inject
-    ${pageName}Presenter presenter;
+
+    public static void startActivity(Context context) {
+        Intent intent = new Intent(context, ${pageName}Activity.class);
+        context.startActivity(intent);
+    }
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.${layoutName});
-		getActivityComponent().inject(this);
-		presenter.attachView(this);
+    }
+
+    @Override
+    protected void inject() {
+        getActivityComponent().inject(this);
     }
 	
 	
 	@Override
-    public void onFailure() {
+    public void onFail(String msg) {
 
     }
 	
-	@Override
-    public void onDestroy() {
-        super.onDestroy();
-        presenter.detachView();
-    }
 
 }

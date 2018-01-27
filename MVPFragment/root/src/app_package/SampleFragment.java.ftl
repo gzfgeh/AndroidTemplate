@@ -15,12 +15,9 @@ import butterknife.ButterKnife;
 /**
  * create by 
  */
-public class ${pageName}Fragment extends BaseFragment implements ${pageName}View{
+public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> implements ${pageName}View{
 	private static final String ARG_PARAM1 = "param1";
     private String mParam1;
-
-	@Inject
-    ${pageName}Presenter presenter;
 	
 	public static ${pageName}Fragment newInstance(String param1) {
         ${pageName}Fragment fragment = new ${pageName}Fragment();
@@ -44,19 +41,20 @@ public class ${pageName}Fragment extends BaseFragment implements ${pageName}View
         View view = inflater.inflate(R.layout.${layoutName}, container, false);
         ButterKnife.bind(this, view);
 		getActivityComponent().inject(this);
-		presenter.attachView(this);
+		
         return view;
+    }
+
+    @Override
+    protected void inject() {
+        getActivityComponent().inject(this);
     }
 	
 	@Override
-    public void onFailure() {
+    public void onFail(String msg) {
 
     }
 	
-	@Override
-    public void onDestroy() {
-        super.onDestroy();
-        presenter.detachView();
-    }
+
 
 }

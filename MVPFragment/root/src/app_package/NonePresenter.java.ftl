@@ -16,4 +16,22 @@ public class ${pageName}Presenter extends BasePresenter<${pageName}View> {
 
     @Inject
     ${pageName}Presenter(){}
+
+    public void getData(Context context){
+        compositeDisposable.add(model.getData()
+            .subscribeWith(new RxSubUtils<String>(compositeDisposable, context){
+
+                @Override
+                protected void _onNext(String o) {
+                    
+                }
+
+                @Override
+                protected void _onError(String msg) {
+                    getView().onFail(msg);
+                }
+            }));
+    }
+
+    
 }
