@@ -1,5 +1,5 @@
 package  ${packageName}.View;
 
 public interface BaseView {
-    void onFailure();
+    void onFail(String msg);
 }

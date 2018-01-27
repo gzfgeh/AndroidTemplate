@@ -2,26 +2,26 @@ package  ${packageName}.Present;
 
 import ${packageName}.View.BaseView;
 
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
 
-public class BasePresenter<T extends BaseView> implements Presenter<T>{
-    public CompositeSubscription mCompositeSubscription;
+public class BasePresenter<T extends BaseView> implements Presenter<T> {
+    public CompositeDisposable compositeDisposable;
     public T view;
 
     @Override
     public void attachView(T t) {
-        mCompositeSubscription = new CompositeSubscription();
+        compositeDisposable = new CompositeDisposable();
         view = t;
     }
 
     @Override
     public void detachView() {
-        mCompositeSubscription.unsubscribe();
-        mCompositeSubscription = null;
+        compositeDisposable.clear();
+        compositeDisposable = null;
         view = null;
     }
 
-    public T getView(){
+    public T getView() {
         return view;
     }
 }

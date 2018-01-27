@@ -2,10 +2,9 @@ package  ${packageName}.Present;
 
 import ${packageName}.Model.SplashModel;
 import ${packageName}.View.SplashView;
+import ${packageName}.Utils.RxSubUtils;
 
 import javax.inject.Inject;
-
-import rx.Subscriber;
 
 public class SplashPresent extends BasePresenter<SplashView>{
     @Inject
@@ -14,25 +13,12 @@ public class SplashPresent extends BasePresenter<SplashView>{
     @Inject
     public SplashPresent(){}
 
-    public void getUrl(){
-        mCompositeSubscription.add(splashModel.getUrl()
-                .subscribe(new Subscriber<String>() {
+    public void getUrl() {
+        compositeDisposable.add(splashModel.getUrl()
+                .subscribeWith(new RxSubUtils<String>(compositeDisposable) {
                     @Override
-                    public void onCompleted() {
-                        if (mCompositeSubscription != null)
-                            mCompositeSubscription.remove(this);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        if (getView() != null)
-                            getView().onFailure();
-                    }
-
-                    @Override
-                    public void onNext(String data) {
-                        if (getView() != null)
-                            getView().getUrlData(data);
+                    protected void _onNext(String s) {
+                        getView().getUrlData(s);
                     }
                 }));
     }

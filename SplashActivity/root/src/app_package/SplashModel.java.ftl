@@ -5,21 +5,25 @@ import ${packageName}.Utils.RxUtils;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import rx.Observable;
-import rx.Subscriber;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.annotations.NonNull;
 
 @Singleton
 public class SplashModel extends BaseModel {
 	@Inject
     public SplashModel(){}
 	
-    public Observable<String> getUrl(){
-        return Observable.create(new Observable.OnSubscribe<String>() {
+    public Flowable<String> getUrl() {
+        return Flowable.create(new FlowableOnSubscribe<String>() {
             @Override
-            public void call(Subscriber<? super String> subscriber) {
-                subscriber.onNext("http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg");
-                subscriber.onCompleted();
+            public void subscribe(@NonNull FlowableEmitter<String> observableEmitter) throws Exception {
+                observableEmitter.onNext("http://img.my.csdn.net/uploads/201309/01/1378037235_7476.jpg");
+                observableEmitter.onComplete();
             }
-        }).compose(RxUtils.applyIOToMainThreadSchedulers());
+        }, BackpressureStrategy.ERROR)
+                .compose(RxUtils.applyIOToMainThreadSchedulers());
     }
 }

@@ -7,8 +7,8 @@ import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import ${packageName}.Activity.BaseActivity;
 import android.widget.TextView;
+import org.reactivestreams.Subscription;
 
 import com.bumptech.glide.Glide;
 import ${packageName}.Present.SplashPresent;
@@ -17,14 +17,14 @@ import ${packageName}.View.SplashView;
 import ${packageName}.R;
 
 import java.util.concurrent.TimeUnit;
-import javax.inject.Inject;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 
-public class ${activityClass} extends BaseActivity implements SplashView{
+import io.reactivex.Flowable;
+import io.reactivex.FlowableSubscriber;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+
+public class ${activityClass} extends BaseActivity<SplashPresent> implements SplashView{
     private static final int STARTUP_DELAY = 300; // 启动延迟
     private static final int ANIM_ITEM_DURATION = 2000;
 
@@ -33,22 +33,23 @@ public class ${activityClass} extends BaseActivity implements SplashView{
     private TextView tvLogoText;
     private ViewPropertyAnimatorCompat viewAnimator;
     private int secondTime = ${secondTime};
-	
-	@Inject
-	SplashPresent splashPresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.${activityLayoutName});
-		getActivityComponent().inject(this);
-        splashPresent.attachView(this);
-        splashPresent.getUrl();
+        presenter.getUrl();
 
         tempPage = (ImageView) findViewById(R.id.temp_page);
 		ivLogo = (ImageView) findViewById(R.id.onboard_iv_logo);
         tvLogoText = (TextView) findViewById(R.id.tv_logo_text);
         logoAnimation();
+    }
+
+    @Override
+    protected void inject() {
+        super.inject();
+        getActivityComponent().inject(this);
     }
 	
 	/**
@@ -75,38 +76,34 @@ public class ${activityClass} extends BaseActivity implements SplashView{
                 .load(data)
                 .into(tempPage);
 
-        Observable.timer(secondTime, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Object>() {
+        Flowable.timer(secondTime, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                .subscribe(new FlowableSubscriber<Long>() {
                     @Override
-                    public void onCompleted() {
+                    public void onSubscribe(@NonNull Subscription subscription) {
+
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onNext(Long aLong) {
+                        tvLogoText.setVisibility(View.GONE);
+                        ivLogo.setVisibility(View.GONE);
                         goToNextActivity();
                     }
 
                     @Override
-                    public void onNext(Object o) {
-                        tvLogoText.setVisibility(View.GONE);
-                        ivLogo.setVisibility(View.GONE);
-                        tempPage.setVisibility(View.VISIBLE);
+                    public void onError(Throwable throwable) {
+                        goToNextActivity();
+                    }
 
-                        Observable.timer(secondTime, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
-                                .map(new Func1<Long, Object>() {
-                                    @Override
-                                    public Object call(Long aLong) {
-                                        goToNextActivity();
-                                        return aLong;
-                                    }
-                                }).subscribe();
+                    @Override
+                    public void onComplete() {
 
                     }
                 });
     }
 
     @Override
-    public void onFailure() {
+    public void onFail(String msg) {
 
     }
 

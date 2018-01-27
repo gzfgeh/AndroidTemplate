@@ -1,4 +1,4 @@
-package  ${packageName}.Module;
+package  ${packageName}.Utils.Dagger.Module;
 
 import android.app.Application;
 

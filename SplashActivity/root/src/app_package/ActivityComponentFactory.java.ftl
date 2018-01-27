@@ -1,9 +1,9 @@
-package  ${packageName}.Component;
+package  ${packageName}.Utils.Dagger.Component;
 
 import android.app.Activity;
 
 import ${packageName}.APP;
-import ${packageName}.Module.ActivityModule;
+import ${packageName}.Utils.Dagger.Module.ActivityModule;
 
 public final class ActivityComponentFactory {
     private ActivityComponentFactory() {

@@ -14,20 +14,22 @@
 	    <dependency mavenUrl="com.android.support:design:${buildApi}.+" />
 	</#if>
 	
-	<dependency mavenUrl="io.reactivex:rxjava:1.1.4" />
-	<dependency mavenUrl="io.reactivex:rxandroid:1.2.0" />
+	<dependency mavenUrl="io.reactivex.rxjava2:rxjava:2.0.8" />
+	<dependency mavenUrl="io.reactivex.rxjava2:rxandroid:2.0.1" />
 	<dependency mavenUrl="com.github.bumptech.glide:glide:3.7.0" />
 	
 	<dependency mavenUrl="com.squareup.okhttp3:logging-interceptor:3.4.1" />
 	<dependency mavenUrl="com.squareup.okhttp3:okhttp:3.4.1" />
 	
-	<dependency mavenUrl="com.squareup.retrofit2:retrofit:2.1.0" />
-	<dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.1.0" />
-	<dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava:2.1.0" />
+	<dependency mavenUrl="com.squareup.retrofit2:retrofit:2.2.0" />
+	<dependency mavenUrl="com.squareup.retrofit2:converter-gson:2.2.0" />
+	<dependency mavenUrl="com.squareup.retrofit2:adapter-rxjava2:2.2.0" />
 	<dependency mavenUrl="com.google.dagger:dagger:2.0.2" />
 	<dependency mavenUrl="com.zhy:autolayout:1.4.5" />
 	<dependency mavenUrl="com.jakewharton:butterknife:8.4.0" />
 	<dependency mavenUrl="com.github.gzfgeh:RecyclerView:V1.3" />
+	<dependency mavenUrl="com.github.gzfgeh:SwipeBack:v1.0.3" />
+	<dependency mavenUrl="com.github.gzfgeh:IOSDialog:v1.2.1" />
 	
 	
 
@@ -63,9 +65,7 @@
 		
 	<instantiate from="root/src/app_package/BaseFragmentAdapter.java.ftl"
         to="${escapeXmlAttribute(srcOut)}/Adapter/BaseFragmentAdapter.java" />
-		
-		
-		
+	
 	
 	<instantiate from="root/src/app_package/BaseModel.java.ftl"
      	to="${escapeXmlAttribute(srcOut)}/Model/BaseModel.java" />
@@ -110,22 +110,22 @@
      	to="${escapeXmlAttribute(srcOut)}/APP.java" />	
 		
 	<instantiate from="root/src/app_package/ActivityComponent.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/Component/ActivityComponent.java" />
+     	to="${escapeXmlAttribute(srcOut)}/Utils/Dagger/Component/ActivityComponent.java" />
 	
 	<instantiate from="root/src/app_package/ActivityComponentFactory.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/Component/ActivityComponentFactory.java" />
+     	to="${escapeXmlAttribute(srcOut)}/Utils/Dagger/Component/ActivityComponentFactory.java" />
 		
 	<instantiate from="root/src/app_package/ActivityScope.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/Component/ActivityScope.java" />
+     	to="${escapeXmlAttribute(srcOut)}/Utils/Dagger/Component/ActivityScope.java" />
 		
 	<instantiate from="root/src/app_package/ApplicationComponent.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/Component/ApplicationComponent.java" />		
+     	to="${escapeXmlAttribute(srcOut)}/Utils/Dagger/Component/ApplicationComponent.java" />
 		
 	<instantiate from="root/src/app_package/ActivityModule.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/Module/ActivityModule.java" />
+     	to="${escapeXmlAttribute(srcOut)}/Utils/Dagger/Module/ActivityModule.java" />
 		
 	<instantiate from="root/src/app_package/ApplicationModule.java.ftl"
-     	to="${escapeXmlAttribute(srcOut)}/Module/ApplicationModule.java" />	
+     	to="${escapeXmlAttribute(srcOut)}/Utils/Dagger/Module/ApplicationModule.java" />	
 		
 	<instantiate from="root/src/app_package/BaseActivity.java.ftl"
      	to="${escapeXmlAttribute(srcOut)}/Activity/BaseActivity.java" />	
@@ -135,7 +135,21 @@
 		
 	<instantiate from="root/src/app_package/ApiConstants.java.ftl"
      	to="${escapeXmlAttribute(srcOut)}/Common/ApiConstants.java" />
+    	 	 	 	
+    <instantiate from="root/src/app_package/ILoadingDialog.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Widget/LoadingDialog/ILoadingDialog.java" />
 
+    <instantiate from="root/src/app_package/IOSLoadingDialog.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Widget/LoadingDialog/IOSLoadingDialog.java" />
+     	
+    <instantiate from="root/src/app_package/LoadingDialogManager.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Widget/LoadingDialog/LoadingDialogManager.java" />
+
+    <instantiate from="root/src/app_package/RxSubUtils.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Utils/RxSubUtils.java" /> 
+
+    <instantiate from="root/src/app_package/ToastUtil.java.ftl"
+     	to="${escapeXmlAttribute(srcOut)}/Utils/ToastUtil.java" /> 
 		
 	
 	<copy from="root/res/drawable-xxhdpi"

@@ -3,9 +3,9 @@ package  ${packageName};
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import ${packageName}.Component.ApplicationComponent;
-import ${packageName}.Component.DaggerApplicationComponent;
-import ${packageName}.Module.ApplicationModule;
+import ${packageName}.Utils.Dagger.Component.ApplicationComponent;
+import ${packageName}.Utils.Dagger.Component.DaggerApplicationComponent;
+import ${packageName}.Utils.Dagger.Module.ApplicationModule;
 import ${packageName}.Utils.LogUtils;
 
 public class APP extends Application {

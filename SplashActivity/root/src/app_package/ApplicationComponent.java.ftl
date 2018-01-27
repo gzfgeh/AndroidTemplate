@@ -1,10 +1,10 @@
-package  ${packageName}.Component;
+package  ${packageName}.Utils.Dagger.Component;
 
 import android.support.annotation.NonNull;
 
 import ${packageName}.APP;
-import ${packageName}.Module.ActivityModule;
-import ${packageName}.Module.ApplicationModule;
+import ${packageName}.Utils.Dagger.Module.ActivityModule;
+import ${packageName}.Utils.Dagger.Module.ApplicationModule;
 
 import javax.inject.Singleton;
 

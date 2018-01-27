@@ -1,4 +1,4 @@
-package  ${packageName}.Component;
+package  ${packageName}.Utils.Dagger.Component;
 
 import java.lang.annotation.Retention;
 
